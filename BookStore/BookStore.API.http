@@ -1,0 +1,14 @@
+### Get all books
+GET http://localhost:5000/api/books
+Accept: application/json
+
+### Create a new book
+POST http://localhost:5000/api/books
+Content-Type: application/json
+
+{
+  "title": "New Book",
+  "description": "Description of the new book",
+  "pages": 123,
+  "price": 12.99
+}

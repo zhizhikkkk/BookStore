@@ -31,25 +31,21 @@ namespace WebApplication1.Models
             if (string.IsNullOrEmpty(title) || title.Length > MAX_TITLE_LENGTH)
             {
                 error = "Title cannot be empty or longer than 250 characters.";
-                return (null, error);
             }
 
             if (string.IsNullOrEmpty(description) || description.Length > MAX_DESCRIPTION_LENGTH)
             {
                 error = "Description cannot be empty or longer than 1000 characters.";
-                return (null, error);
             }
 
             if (pages < MIN_PAGES || pages > MAX_PAGES)
             {
                 error = "Pages must be between 1 and 10000.";
-                return (null, error);
             }
 
             if (price < MIN_PRICE)
             {
                 error = "Price must be greater than or equal to 0.";
-                return (null, error);
             }
 
             var book = new Book(id, title, description, pages, price);

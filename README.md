@@ -1,1 +1,1 @@
-веб приложение на ASP.NET Core, React, EF Core, Postgresql
+веб приложение на ASP.NET Core, EF Core, Postgresql

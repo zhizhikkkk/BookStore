@@ -1,8 +1,10 @@
 namespace BookStore.Contracts;
 
-public record BooksRequest(
-    string Title,
-    string Description,
-    int Pages,
-    decimal Price
-);
+    public record BooksRequest(
+        string Title,
+        string Description,
+        int Pages,
+        decimal Price,
+        Guid AuthorId,
+        string AuthorName
+    );

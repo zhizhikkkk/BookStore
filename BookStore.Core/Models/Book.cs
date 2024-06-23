@@ -8,13 +8,14 @@ namespace WebApplication1.Models
         public const int MAX_PAGES = 10000;
         public const decimal MIN_PRICE = 0.0m;
 
-        private Book(Guid id, string title, string description, int pages, decimal price)
+        private Book(Guid id, string title, string description, int pages, decimal price, Author author)
         {
             Id = id;
             Title = title;
             Description = description;
             Pages = pages;
             Price = price;
+            Author = author;
         }
 
         public Guid Id { get; }
@@ -22,9 +23,9 @@ namespace WebApplication1.Models
         public string Description { get; } = string.Empty;
         public int Pages { get; } = 0;
         public decimal Price { get; }
-        
-        //реализация паттерна Фабрика
-        public static (Book book, string error) Create(Guid id, string title, string description, int pages, decimal price)
+        public Author Author { get; private set; }
+
+        public static (Book book, string error) Create(Guid id, string title, string description, int pages, decimal price, Author author)
         {
             var error = string.Empty;
 
@@ -48,9 +49,14 @@ namespace WebApplication1.Models
                 error = "Price must be greater than or equal to 0.";
             }
 
-            var book = new Book(id, title, description, pages, price);
+            var book = new Book(id, title, description, pages, price, author);
 
             return (book, error);
+        }
+
+        public void SetAuthor(Author author)
+        {
+            Author = author;
         }
     }
 }

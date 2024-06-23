@@ -12,5 +12,15 @@ public class BookStoreDbContext : DbContext
     }
     
     public DbSet<BookEntity> Books { get; set; }
+    public DbSet<AuthorEntity> Authors { get; set; }
+
+    protected  override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<BookEntity>()
+            .HasOne(b => b.Author)
+            .WithMany(a => a.Books)
+            .HasForeignKey(b => b.AuthorId);
+        base.OnModelCreating(modelBuilder);
+    }
 }
 
